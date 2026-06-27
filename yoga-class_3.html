@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saurav Yoga Classes — Find Your Still</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --sage: #6B7B5E;
+    --sage-light: #A8B89A;
+    --sage-pale: #EEF2EB;
+    --clay: #C4856A;
+    --clay-light: #E8C4B4;
+    --clay-pale: #F8EDE8;
+    --warm-white: #FAFAF7;
+    --ink: #2A2A22;
+    --ink-soft: #5A5A4E;
+    --stone: #D6D3C8;
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'DM Sans', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--warm-white);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 4rem;
+    background: rgba(250,250,247,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--stone);
+  }
+
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--sage); }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--sage); }
+
+  .nav-cta {
+    background: var(--sage);
+    color: white !important;
+    padding: 0.5rem 1.25rem;
+    border-radius: 2rem;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--ink) !important; color: white !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 5rem;
+  }
+
+  .hero-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5rem 4rem 5rem 4rem;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--clay);
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-headline {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 5vw, 5.5rem);
+    font-weight: 300;
+    line-height: 1.08;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-headline em {
+    font-style: italic;
+    color: var(--sage);
+  }
+
+  .hero-sub {
+    font-size: 1.05rem;
+    color: var(--ink-soft);
+    max-width: 400px;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .btn-primary {
+    background: var(--sage);
+    color: white;
+    padding: 0.85rem 2rem;
+    border-radius: 2rem;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover { background: var(--ink); transform: translateY(-1px); }
+
+  .btn-ghost {
+    color: var(--ink-soft);
+    font-size: 0.9rem;
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    border-bottom: 1px solid var(--stone);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .btn-ghost:hover { color: var(--clay); border-color: var(--clay); }
+
+  .hero-stats {
+    display: flex;
+    gap: 2.5rem;
+    margin-top: 4rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--stone);
+  }
+
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--ink);
+    display: block;
+  }
+
+  .stat-label {
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .hero-visual {
+    background: var(--sage-pale);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Decorative yoga pose SVG */
+  .pose-illustration {
+    width: 340px;
+    height: 340px;
+    opacity: 0.75;
+  }
+
+  .hero-visual-caption {
+    position: absolute;
+    bottom: 2.5rem;
+    right: 2.5rem;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--sage);
+    letter-spacing: 0.02em;
+  }
+
+  /* MARQUEE */
+  .marquee-strip {
+    background: var(--sage);
+    color: white;
+    padding: 0.9rem 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .marquee-inner {
+    display: inline-flex;
+    gap: 0;
+    animation: marquee 28s linear infinite;
+  }
+
+  .marquee-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 0 2rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+
+  .marquee-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--clay-light);
+    flex-shrink: 0;
+  }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* ABOUT SECTION */
+  section { padding: 7rem 4rem; }
+
+  .about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-tag {
+    display: inline-block;
+    background: var(--clay-pale);
+    color: var(--clay);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 0.35rem 0.85rem;
+    border-radius: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-heading {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 300;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    color: var(--ink);
+  }
+
+  .section-heading em {
+    font-style: italic;
+    color: var(--clay);
+  }
+
+  .section-body {
+    color: var(--ink-soft);
+    line-height: 1.85;
+    margin-bottom: 1.5rem;
+  }
+
+  .about-visual {
+    background: var(--clay-pale);
+    border-radius: 2rem 2rem 8rem 2rem;
+    height: 480px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .about-badge {
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem;
+    background: white;
+    border-radius: 1rem;
+    padding: 1rem 1.5rem;
+    box-shadow: 0 4px 20px rgba(42,42,34,0.1);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .badge-icon {
+    width: 44px;
+    height: 44px;
+    background: var(--sage-pale);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+  }
+
+  .badge-text strong {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .badge-text span {
+    font-size: 0.75rem;
+    color: var(--ink-soft);
+  }
+
+  /* CLASSES */
+  .classes-section {
+    background: var(--sage-pale);
+    padding: 7rem 4rem;
+  }
+
+  .classes-header {
+    text-align: center;
+    max-width: 560px;
+    margin: 0 auto 4rem;
+  }
+
+  .classes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .class-card {
+    background: white;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    transition: transform 0.2s;
+  }
+
+  .class-card:hover { transform: translateY(-4px); }
+
+  .class-card-top {
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    position: relative;
+  }
+
+  .class-card-top.morning { background: linear-gradient(135deg, #FFF3E6, #FFE0CC); }
+  .class-card-top.flow { background: linear-gradient(135deg, #EEF2EB, #D4E3CA); }
+  .class-card-top.restore { background: linear-gradient(135deg, #F0EDFA, #DDD5F5); }
+
+  .class-level {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: rgba(255,255,255,0.85);
+    color: var(--ink-soft);
+    padding: 0.25rem 0.6rem;
+    border-radius: 2rem;
+  }
+
+  .class-card-body { padding: 1.5rem; }
+
+  .class-duration {
+    font-size: 0.75rem;
+    color: var(--clay);
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .class-name {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+
+  .class-desc {
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+  }
+
+  .class-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 1rem;
+    border-top: 1px solid var(--stone);
+  }
+
+  .class-times {
+    font-size: 0.8rem;
+    color: var(--ink-soft);
+  }
+
+  .class-book {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--sage);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    border-bottom: 1px solid var(--sage-light);
+    padding-bottom: 1px;
+  }
+
+  /* SCHEDULE */
+  .schedule-section { max-width: 1000px; margin: 0 auto; }
+
+  .schedule-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+  }
+
+  .days-nav {
+    display: flex;
+    gap: 0.25rem;
+    background: var(--sage-pale);
+    padding: 0.3rem;
+    border-radius: 2rem;
+  }
+
+  .day-btn {
+    padding: 0.4rem 1rem;
+    border-radius: 2rem;
+    border: none;
+    background: transparent;
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    font-weight: 400;
+    color: var(--ink-soft);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .day-btn.active {
+    background: white;
+    color: var(--ink);
+    font-weight: 500;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+
+  .schedule-table { width: 100%; border-collapse: collapse; }
+
+  .schedule-table th {
+    text-align: left;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+    padding: 0 1rem 1rem;
+    border-bottom: 1px solid var(--stone);
+  }
+
+  .schedule-table td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--sage-pale);
+    vertical-align: middle;
+  }
+
+  .schedule-time {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+
+  .schedule-class { font-weight: 500; font-size: 0.9rem; color: var(--ink); }
+  .schedule-teacher { font-size: 0.83rem; color: var(--ink-soft); }
+
+  .level-badge {
+    font-size: 0.7rem;
+    font-weight: 500;
+    padding: 0.2rem 0.6rem;
+    border-radius: 2rem;
+    display: inline-block;
+    letter-spacing: 0.06em;
+  }
+
+  .level-all { background: var(--sage-pale); color: var(--sage); }
+  .level-beg { background: #EFF8FF; color: #3B82C8; }
+  .level-int { background: var(--clay-pale); color: var(--clay); }
+
+  .book-spot {
+    background: transparent;
+    border: 1px solid var(--stone);
+    color: var(--sage);
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 500;
+    padding: 0.4rem 1rem;
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: all 0.15s;
+    letter-spacing: 0.04em;
+  }
+
+  .book-spot:hover {
+    background: var(--sage);
+    color: white;
+    border-color: var(--sage);
+  }
+
+  /* TEACHER */
+  .teacher-section {
+    background: var(--ink);
+    color: white;
+    padding: 7rem 4rem;
+  }
+
+  .teacher-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  .teacher-portrait {
+    aspect-ratio: 3/4;
+    background: var(--sage);
+    border-radius: 1.5rem 1.5rem 6rem 1.5rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .teacher-section .section-tag {
+    background: rgba(168,184,154,0.2);
+    color: var(--sage-light);
+  }
+
+  .teacher-section .section-heading { color: white; }
+  .teacher-section .section-heading em { color: var(--sage-light); }
+  .teacher-section .section-body { color: #B0AFA6; }
+
+  .teacher-quals {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .qual-item {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 0.75rem;
+    padding: 1rem 1.25rem;
+  }
+
+  .qual-item strong { display: block; font-size: 0.9rem; font-weight: 500; color: white; margin-bottom: 0.2rem; }
+  .qual-item span { font-size: 0.8rem; color: #8A8A80; }
+
+  /* PRICING */
+  .pricing-section { padding: 7rem 4rem; }
+
+  .pricing-inner { max-width: 1000px; margin: 0 auto; }
+
+  .pricing-header { text-align: center; margin-bottom: 4rem; }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .pricing-card {
+    border: 1px solid var(--stone);
+    border-radius: 1.5rem;
+    padding: 2rem;
+    transition: transform 0.2s;
+  }
+
+  .pricing-card:hover { transform: translateY(-3px); }
+
+  .pricing-card.featured {
+    border-color: var(--sage);
+    background: var(--sage-pale);
+    position: relative;
+  }
+
+  .featured-tag {
+    position: absolute;
+    top: -0.8rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--sage);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.85rem;
+    border-radius: 2rem;
+    white-space: nowrap;
+  }
+
+  .pricing-name {
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--ink-soft);
+    margin-bottom: 1rem;
+  }
+
+  .pricing-price {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: 300;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+
+  .pricing-price sup { font-size: 1.5rem; vertical-align: top; margin-top: 0.5rem; display: inline-block; }
+
+  .pricing-period { font-size: 0.82rem; color: var(--ink-soft); margin-bottom: 1.75rem; }
+
+  .pricing-features { list-style: none; margin-bottom: 2rem; }
+
+  .pricing-features li {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+    padding: 0.4rem 0;
+    border-bottom: 1px solid rgba(214,211,200,0.5);
+  }
+
+  .pricing-features li:last-child { border-bottom: none; }
+
+  .check-icon {
+    width: 16px;
+    height: 16px;
+    background: var(--sage-pale);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.6rem;
+    color: var(--sage);
+    flex-shrink: 0;
+  }
+
+  .pricing-card.featured .check-icon { background: white; }
+
+  .btn-pricing {
+    display: block;
+    text-align: center;
+    padding: 0.85rem;
+    border-radius: 2rem;
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s;
+    border: 1px solid var(--stone);
+    color: var(--ink);
+    background: white;
+  }
+
+  .btn-pricing:hover { border-color: var(--sage); color: var(--sage); }
+  .pricing-card.featured .btn-pricing { background: var(--sage); color: white; border-color: var(--sage); }
+  .pricing-card.featured .btn-pricing:hover { background: var(--ink); border-color: var(--ink); }
+
+  /* TESTIMONIALS */
+  .testimonials-section {
+    background: var(--clay-pale);
+    padding: 7rem 4rem;
+  }
+
+  .testimonials-inner { max-width: 1100px; margin: 0 auto; }
+
+  .testimonials-header { margin-bottom: 3.5rem; }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .testimonial-card {
+    background: white;
+    border-radius: 1.25rem;
+    padding: 2rem;
+  }
+
+  .testimonial-stars {
+    color: var(--clay);
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+  }
+
+  .testimonial-quote {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+  }
+
+  .testimonial-author { display: flex; align-items: center; gap: 0.75rem; }
+
+  .author-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 500;
+    flex-shrink: 0;
+    color: white;
+  }
+
+  .author-name { font-size: 0.88rem; font-weight: 500; color: var(--ink); }
+  .author-detail { font-size: 0.78rem; color: var(--ink-soft); }
+
+  /* CTA */
+  .cta-section {
+    padding: 8rem 4rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 60% at 50% 50%, var(--sage-pale) 0%, var(--warm-white) 100%);
+    z-index: 0;
+  }
+
+  .cta-content { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; }
+
+  .cta-content .section-heading { font-size: clamp(2.5rem, 4vw, 4rem); }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink);
+    color: white;
+    padding: 4rem;
+  }
+
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem;
+  }
+
+  .footer-brand {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    color: white;
+    margin-bottom: 1rem;
+  }
+
+  .footer-brand span { color: var(--sage-light); }
+
+  .footer-tagline { font-size: 0.85rem; color: #7A7A70; line-height: 1.8; }
+
+  .footer-col h4 {
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: #7A7A70;
+    margin-bottom: 1.25rem;
+  }
+
+  .footer-col ul { list-style: none; }
+
+  .footer-col li { margin-bottom: 0.75rem; }
+
+  .footer-col a {
+    font-size: 0.88rem;
+    color: #B0AFA6;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-col a:hover { color: var(--sage-light); }
+
+  .footer-bottom {
+    max-width: 1200px;
+    margin: 3rem auto 0;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-copy { font-size: 0.78rem; color: #5A5A50; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Saurav <span>Yoga Classes</span></a>
+  <ul class="nav-links">
+    <li><a href="#classes">Classes</a></li>
+    <li><a href="#schedule">Schedule</a></li>
+    <li><a href="#about">Teacher</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#book" class="nav-cta">Book a class</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="padding: 0;">
+  <div class="hero-text">
+    <p class="hero-eyebrow">Studio · Online · Community</p>
+    <h1 class="hero-headline">
+      Where breath<br>meets <em>stillness</em>
+    </h1>
+    <p class="hero-sub">Small-group yoga classes designed to meet you exactly where you are — whether it's your first downward dog or your thousandth.</p>
+    <div class="hero-actions">
+      <a href="#classes" class="btn-primary">Explore classes</a>
+      <a href="#schedule" class="btn-ghost">View schedule →</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <span class="stat-num">12+</span>
+        <span class="stat-label">Class styles</span>
+      </div>
+      <div>
+        <span class="stat-num">340</span>
+        <span class="stat-label">Students</span>
+      </div>
+      <div>
+        <span class="stat-num">8 yrs</span>
+        <span class="stat-label">Teaching</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <svg class="pose-illustration" viewBox="0 0 340 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Tree pose silhouette -->
+      <!-- Ground/circle backdrop -->
+      <circle cx="170" cy="280" r="60" fill="#D4E3CA" opacity="0.5"/>
+      <!-- Body standing -->
+      <line x1="170" y1="140" x2="170" y2="230" stroke="#6B7B5E" stroke-width="6" stroke-linecap="round"/>
+      <!-- Head -->
+      <circle cx="170" cy="120" r="22" fill="#C4856A" opacity="0.85"/>
+      <!-- Arms -->
+      <line x1="170" y1="155" x2="115" y2="195" stroke="#6B7B5E" stroke-width="5" stroke-linecap="round"/>
+      <line x1="170" y1="155" x2="225" y2="195" stroke="#6B7B5E" stroke-width="5" stroke-linecap="round"/>
+      <!-- Hands together (namaste) -->
+      <ellipse cx="170" cy="138" rx="12" ry="8" fill="#C4856A" opacity="0.4"/>
+      <!-- Standing leg -->
+      <line x1="170" y1="230" x2="170" y2="280" stroke="#6B7B5E" stroke-width="6" stroke-linecap="round"/>
+      <!-- Bent leg (tree pose) -->
+      <path d="M170 230 Q148 248 155 268" stroke="#6B7B5E" stroke-width="5" stroke-linecap="round" fill="none"/>
+      <!-- Foot on standing leg -->
+      <ellipse cx="170" cy="283" rx="18" ry="7" fill="#6B7B5E" opacity="0.4"/>
+      <!-- Decorative circles -->
+      <circle cx="170" cy="170" r="90" stroke="#A8B89A" stroke-width="1" stroke-dasharray="4 6" opacity="0.4"/>
+      <circle cx="170" cy="170" r="130" stroke="#A8B89A" stroke-width="0.5" stroke-dasharray="2 8" opacity="0.25"/>
+    </svg>
+    <p class="hero-visual-caption">Vrikshasana · Tree Pose</p>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-strip" aria-hidden="true">
+  <div class="marquee-inner">
+    <span class="marquee-item">Hatha Yoga <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Vinyasa Flow <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Yin & Restore <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Prenatal Yoga <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Meditation <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Breathwork <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Morning Flow <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Private Sessions <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Hatha Yoga <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Vinyasa Flow <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Yin & Restore <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Prenatal Yoga <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Meditation <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Breathwork <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Morning Flow <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Private Sessions <span class="marquee-dot"></span></span>
+  </div>
+</div>
+
+<!-- CLASSES -->
+<section class="classes-section" id="classes">
+  <div class="classes-header">
+    <span class="section-tag">What we offer</span>
+    <h2 class="section-heading">A class for every <em>season of you</em></h2>
+    <p style="color: var(--ink-soft); font-size: 0.95rem;">Whether you're starting fresh or deepening a long-standing practice, there's a room for you here.</p>
+  </div>
+  <div class="classes-grid">
+    <div class="class-card">
+      <div class="class-card-top morning">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+          <circle cx="40" cy="40" r="18" fill="#E8A87C" opacity="0.9"/>
+          <line x1="40" y1="12" x2="40" y2="20" stroke="#E8A87C" stroke-width="3" stroke-linecap="round"/>
+          <line x1="40" y1="60" x2="40" y2="68" stroke="#E8A87C" stroke-width="3" stroke-linecap="round"/>
+          <line x1="12" y1="40" x2="20" y2="40" stroke="#E8A87C" stroke-width="3" stroke-linecap="round"/>
+          <line x1="60" y1="40" x2="68" y2="40" stroke="#E8A87C" stroke-width="3" stroke-linecap="round"/>
+          <line x1="21" y1="21" x2="27" y2="27" stroke="#E8A87C" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="53" y1="53" x2="59" y2="59" stroke="#E8A87C" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="59" y1="21" x2="53" y2="27" stroke="#E8A87C" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="27" y1="53" x2="21" y2="59" stroke="#E8A87C" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+        <span class="class-level">All levels</span>
+      </div>
+      <div class="class-card-body">
+        <p class="class-duration">60 min</p>
+        <h3 class="class-name">Morning Flow</h3>
+        <p class="class-desc">Ease into your day with a grounding vinyasa sequence. Warm the body, clear the mind, set an intention.</p>
+        <div class="class-meta">
+          <span class="class-times">Mon · Wed · Fri · 7:00 am</span>
+          <a href="#book" class="class-book">Book →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="class-card">
+      <div class="class-card-top flow">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+          <path d="M20 55 C25 30, 55 30, 60 55" stroke="#6B7B5E" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <circle cx="40" cy="28" r="10" fill="#6B7B5E" opacity="0.7"/>
+          <line x1="40" y1="38" x2="40" y2="55" stroke="#6B7B5E" stroke-width="3" stroke-linecap="round"/>
+          <ellipse cx="40" cy="57" rx="12" ry="5" fill="#6B7B5E" opacity="0.3"/>
+        </svg>
+        <span class="class-level">Intermediate</span>
+      </div>
+      <div class="class-card-body">
+        <p class="class-duration">75 min</p>
+        <h3 class="class-name">Vinyasa Flow</h3>
+        <p class="class-desc">Dynamic sequences linked with breath. Build strength, flexibility, and fluid movement through creative sequencing.</p>
+        <div class="class-meta">
+          <span class="class-times">Tue · Thu · Sat · 9:00 am</span>
+          <a href="#book" class="class-book">Book →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="class-card">
+      <div class="class-card-top restore">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+          <ellipse cx="40" cy="50" rx="28" ry="10" fill="#9B8EC4" opacity="0.3"/>
+          <path d="M15 50 Q40 20 65 50" stroke="#7B68C8" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <circle cx="40" cy="30" r="8" fill="#7B68C8" opacity="0.6"/>
+        </svg>
+        <span class="class-level">All levels</span>
+      </div>
+      <div class="class-card-body">
+        <p class="class-duration">90 min</p>
+        <h3 class="class-name">Yin & Restore</h3>
+        <p class="class-desc">Long-held, floor-based poses that work deep into connective tissue. Perfect for stress relief and recovery.</p>
+        <div class="class-meta">
+          <span class="class-times">Wed · Fri · Sun · 6:00 pm</span>
+          <a href="#book" class="class-book">Book →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCHEDULE -->
+<section id="schedule" style="padding: 7rem 4rem;">
+  <div class="schedule-section">
+    <div class="schedule-header">
+      <div>
+        <span class="section-tag">Weekly schedule</span>
+        <h2 class="section-heading" style="margin-top: 0.75rem; margin-bottom: 0;">Find your time</h2>
+      </div>
+      <div class="days-nav">
+        <button class="day-btn active">Mon</button>
+        <button class="day-btn">Tue</button>
+        <button class="day-btn">Wed</button>
+        <button class="day-btn">Thu</button>
+        <button class="day-btn">Fri</button>
+        <button class="day-btn">Sat</button>
+        <button class="day-btn">Sun</button>
+      </div>
+    </div>
+    <table class="schedule-table">
+      <thead>
+        <tr>
+          <th>Time</th>
+          <th>Class</th>
+          <th>Teacher</th>
+          <th>Level</th>
+          <th>Duration</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="schedule-time">7:00 am</span></td>
+          <td><div class="schedule-class">Morning Flow</div></td>
+          <td><div class="schedule-teacher">Shreya Singh</div></td>
+          <td><span class="level-badge level-all">All levels</span></td>
+          <td style="font-size:0.85rem; color:var(--ink-soft);">60 min</td>
+          <td><button class="book-spot">Reserve spot</button></td>
+        </tr>
+        <tr>
+          <td><span class="schedule-time">9:30 am</span></td>
+          <td><div class="schedule-class">Hatha Foundations</div></td>
+          <td><div class="schedule-teacher">Shreya Singh</div></td>
+          <td><span class="level-badge level-beg">Beginner</span></td>
+          <td style="font-size:0.85rem; color:var(--ink-soft);">60 min</td>
+          <td><button class="book-spot">Reserve spot</button></td>
+        </tr>
+        <tr>
+          <td><span class="schedule-time">12:00 pm</span></td>
+          <td><div class="schedule-class">Lunchtime Flow</div></td>
+          <td><div class="schedule-teacher">Guest teacher</div></td>
+          <td><span class="level-badge level-all">All levels</span></td>
+          <td style="font-size:0.85rem; color:var(--ink-soft);">45 min</td>
+          <td><button class="book-spot">Reserve spot</button></td>
+        </tr>
+        <tr>
+          <td><span class="schedule-time">6:00 pm</span></td>
+          <td><div class="schedule-class">Vinyasa Flow</div></td>
+          <td><div class="schedule-teacher">Shreya Singh</div></td>
+          <td><span class="level-badge level-int">Intermediate</span></td>
+          <td style="font-size:0.85rem; color:var(--ink-soft);">75 min</td>
+          <td><button class="book-spot">Reserve spot</button></td>
+        </tr>
+        <tr>
+          <td><span class="schedule-time">7:30 pm</span></td>
+          <td><div class="schedule-class">Evening Meditate</div></td>
+          <td><div class="schedule-teacher">Shreya Singh</div></td>
+          <td><span class="level-badge level-all">All levels</span></td>
+          <td style="font-size:0.85rem; color:var(--ink-soft);">30 min</td>
+          <td><button class="book-spot">Reserve spot</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- TEACHER -->
+<section class="teacher-section" id="about">
+  <div class="teacher-inner">
+    <div class="teacher-portrait">
+      <svg width="200" height="260" viewBox="0 0 200 260" fill="none">
+        <!-- Stylized teacher silhouette -->
+        <circle cx="100" cy="70" r="40" fill="rgba(168,184,154,0.5)"/>
+        <path d="M60 130 Q100 110 140 130 L155 240 L45 240 Z" fill="rgba(168,184,154,0.35)"/>
+        <line x1="100" y1="108" x2="100" y2="175" stroke="rgba(168,184,154,0.6)" stroke-width="4" stroke-linecap="round"/>
+        <line x1="100" y1="135" x2="60" y2="165" stroke="rgba(168,184,154,0.6)" stroke-width="3.5" stroke-linecap="round"/>
+        <line x1="100" y1="135" x2="140" y2="165" stroke="rgba(168,184,154,0.6)" stroke-width="3.5" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div>
+      <span class="section-tag">Your teacher</span>
+      <h2 class="section-heading" style="margin-top: 0.75rem;">Shreya Singh —<br><em>teaching with presence</em></h2>
+      <p class="section-body">With over 800 hours of teacher training and eight years in the studio, Shreya brings a rare combination of anatomical knowledge, spiritual depth, and genuine warmth to every class she leads.</p>
+      <p class="section-body">Trained in Mysore, India and certified in Hatha, Vinyasa, and Yin traditions, she believes yoga is not a performance — it's a conversation between you and your body.</p>
+      <div class="teacher-quals">
+        <div class="qual-item">
+          <strong>800+ hr certified</strong>
+          <span>Yoga Alliance RYT-800</span>
+        </div>
+        <div class="qual-item">
+          <strong>Mysore trained</strong>
+          <span>KPJAYI, India 2016</span>
+        </div>
+        <div class="qual-item">
+          <strong>Yin certified</strong>
+          <span>Paul Grilley lineage</span>
+        </div>
+        <div class="qual-item">
+          <strong>8 years teaching</strong>
+          <span>340+ active students</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing-section" id="pricing">
+  <div class="pricing-inner">
+    <div class="pricing-header">
+      <span class="section-tag">Memberships</span>
+      <h2 class="section-heading" style="margin-top: 0.75rem;">Simple, <em>honest pricing</em></h2>
+      <p style="color: var(--ink-soft); margin-top: 0.5rem;">No hidden fees. Cancel anytime.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <p class="pricing-name">Drop-in</p>
+        <p class="pricing-price"><sup>₹</sup>999</p>
+        <p class="pricing-period">per class</p>
+        <ul class="pricing-features">
+          <li><span class="check-icon">✓</span> Single class access</li>
+          <li><span class="check-icon">✓</span> Studio or online</li>
+          <li><span class="check-icon">✓</span> Any class type</li>
+        </ul>
+        <a href="#book" class="btn-pricing">Get started</a>
+      </div>
+      <div class="pricing-card featured">
+        <span class="featured-tag">Most popular</span>
+        <p class="pricing-name">Monthly</p>
+        <p class="pricing-price"><sup>₹</sup>7,999</p>
+        <p class="pricing-period">per month · unlimited classes</p>
+        <ul class="pricing-features">
+          <li><span class="check-icon">✓</span> Unlimited classes</li>
+          <li><span class="check-icon">✓</span> Studio + online access</li>
+          <li><span class="check-icon">✓</span> Priority booking</li>
+          <li><span class="check-icon">✓</span> 10% off workshops</li>
+        </ul>
+        <a href="#book" class="btn-pricing">Start membership</a>
+      </div>
+      <div class="pricing-card">
+        <p class="pricing-name">Yearly</p>
+        <p class="pricing-price"><sup>₹</sup>16,999</p>
+        <p class="pricing-period">per year · best value</p>
+        <ul class="pricing-features">
+          <li><span class="check-icon">✓</span> Unlimited classes</li>
+          <li><span class="check-icon">✓</span> Studio or online</li>
+          <li><span class="check-icon">✓</span> 2 months free</li>
+        </ul>
+        <a href="#book" class="btn-pricing">Get yearly plan</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div class="testimonials-inner">
+    <div class="testimonials-header">
+      <span class="section-tag">Student stories</span>
+      <h2 class="section-heading" style="margin-top: 0.75rem;">What students <em>say</em></h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-quote">"I came in with a bad back and left with a completely different relationship to my body. Shreya's cues are precise and kind at the same time."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar" style="background: var(--sage);">AY</div>
+          <div>
+            <p class="author-name">Ankur Yadav</p>
+            <p class="author-detail">Student for 2 years</p>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-quote">"The Yin class completely transformed my sleep. I come every Friday and leave feeling like a different person. The studio has such a special energy."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar" style="background: var(--clay);">GR</div>
+          <div>
+            <p class="author-name">Gaurav Ranjan</p>
+            <p class="author-detail">Monthly member</p>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-quote">"As a complete beginner I was nervous. Shreya made me feel welcome from the first minute. Three months later I haven't missed a week."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar" style="background: #7B68C8;">BS</div>
+          <div>
+            <p class="author-name">Badal Singh Chandel</p>
+            <p class="author-detail">Beginner to regular</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="book">
+  <div class="cta-bg"></div>
+  <div class="cta-content">
+    <span class="section-tag">Ready to begin?</span>
+    <h2 class="section-heading" style="margin-top: 0.75rem;">Your first class<br>is on <em>us</em></h2>
+    <p style="color: var(--ink-soft); margin: 1.25rem 0 2.5rem; font-size: 1rem;">New students get their first class free — no commitment, no credit card. Just come as you are.</p>
+    <a href="#" class="btn-primary" style="font-size: 1rem; padding: 1rem 2.5rem;">Claim your free class</a>
+    <p style="margin-top: 1.25rem; font-size: 0.82rem; color: var(--ink-soft);">Or call us at +91 9117069882 · hello@sauravyoga.com</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <p class="footer-brand">Saurav <span>Yoga Classes</span></p>
+      <p class="footer-tagline">A welcoming yoga studio where every student is known by name. Located at Mithapur, PC Colony, Patna — and open to the world online.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Studio</h4>
+      <ul>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Classes</a></li>
+        <li><a href="#">Schedule</a></li>
+        <li><a href="#">Workshops</a></li>
+        <li><a href="#">Retreats</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Account</h4>
+      <ul>
+        <li><a href="#">Sign in</a></li>
+        <li><a href="#">Membership</a></li>
+        <li><a href="#">Class credits</a></li>
+        <li><a href="#">Gift cards</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Find us</h4>
+      <ul>
+        <li><a href="#">Mithapur, PC Colony, Patna</a></li>
+        <li><a href="#">hello@sauravyoga.com</a></li>
+        <li><a href="#">+91 9117069882</a></li>
+        <li><a href="#">Instagram</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 Saurav Yoga Classes. All rights reserved.</p>
+    <p class="footer-copy">Privacy · Terms</p>
+  </div>
+</footer>
+
+<script>
+  const dayBtns = document.querySelectorAll('.day-btn');
+  dayBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      dayBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
